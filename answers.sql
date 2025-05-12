@@ -37,3 +37,33 @@ INSERT INTO orderdetails VALUES
 (2, 'S10_1949', 50, 200.00),
 (1, 'S10_1678', 10, 100.00),
 (3, 'S12_1108', 20, 300.00);
+
+SELECT customerName FROM customers;
+
+
+
+SELECT 
+    customerName, 
+    country, 
+    AVG(creditLimit) AS average_credit_limit
+FROM 
+    customers
+GROUP BY 
+    customerName, country;
+
+SELECT 
+    productCode, 
+    quantityOrdered, 
+    quantityOrdered * priceEach AS total_price
+FROM 
+    orderdetails
+GROUP BY 
+    productCode, quantityOrdered, priceEach;
+    
+SELECT 
+    checkNumber, 
+    MAX(amount) AS highest_payment
+FROM 
+    payments
+GROUP BY 
+    checkNumber;
